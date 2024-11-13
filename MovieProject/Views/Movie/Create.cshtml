@@ -1,0 +1,124 @@
+﻿@model MovieProject.Models.Movie
+
+@{
+    ViewBag.Title = "Create Movie";
+}
+
+<style>
+    body {
+        background-color: #f8f9fa; /* Sayfanın arka plan rengi */
+        color: #343a40; /* Metin rengi */
+        font-family: Arial, sans-serif; /* Yazı tipi */
+    }
+
+    .container {
+        max-width: 800px; /* Maksimum genişlik */
+        margin: 20px auto; /* Ortala */
+        background-color: #ffffff; /* Kart arka plan rengi */
+        padding: 20px; /* İçerik alanı */
+        border-radius: 5px; /* Köşe yuvarlama */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Gölge efekti */
+    }
+
+    h1 {
+        color: #d48a6e; /* Başlık rengi */
+        text-align: center; /* Başlık ortalanır */
+    }
+
+    .form-group {
+        margin-bottom: 20px; /* Alanlar arası boşluk */
+    }
+
+    hr {
+        border: 1px solid #dee2e6; /* Çizgi rengi */
+        margin: 20px 0; /* Çizgiler arası boşluk */
+    }
+
+    .btn {
+        margin-right: 10px; /* Butonlar arası boşluk */
+    }
+</style>
+
+<div class="container">
+    <h1>Create Movie</h1>
+
+    <form asp-action="Create">
+        <div class="form-group">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            <label asp-for="Rating"></label>
+            <input asp-for="Rating" class="form-control" />
+            <span asp-validation-for="Rating" class="text-danger"></span>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            <label asp-for="Year"></label>
+            <input asp-for="Year" class="form-control" />
+            <span asp-validation-for="Year" class="text-danger"></span>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            <label asp-for="ImdbId"></label>
+            <input asp-for="ImdbId" class="form-control" />
+            <span asp-validation-for="ImdbId" class="text-danger"></span>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            <label asp-for="ImdbLink"></label>
+            <input asp-for="ImdbLink" class="form-control" />
+            <span asp-validation-for="ImdbLink" class="text-danger"></span>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            <label>Genres</label>
+            <select name="selectedGenres" class="form-control" multiple>
+                @foreach (var genre in ViewBag.Genres)
+                {
+                    <option value="@genre.GenreId">@genre.GenreName</option>
+                }
+            </select>
+            <span asp-validation-for="MovieGenres" class="text-danger"></span>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            <label asp-for="Image"></label>
+            <input asp-for="Image" class="form-control" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            <label asp-for="BigImage"></label>
+            <input asp-for="BigImage" class="form-control" />
+            <span asp-validation-for="BigImage" class="text-danger"></span>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            <label asp-for="Thumbnail"></label>
+            <input asp-for="Thumbnail" class="form-control" />
+            <span asp-validation-for="Thumbnail" class="text-danger"></span>
+        </div>
+        <hr />
+
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </form>
+</div>
